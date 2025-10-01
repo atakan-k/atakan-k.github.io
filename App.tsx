@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
-import { AppProvider } from './context/AppContext';
-import Header from './components/Header';
-import Background from './components/Background';
-import Sidebar from './components/Sidebar';
-import MainPage from './pages/MainPage';
-import ProjectDetail from './pages/ProjectDetail';
+import { AppProvider } from './context/AppContext.tsx';
+import Header from './components/Header.tsx';
+import Background from './components/Background.tsx';
+import Sidebar from './components/Sidebar.tsx';
+import MainPage from './pages/MainPage.tsx';
+import ProjectDetail from './pages/ProjectDetail.tsx';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
