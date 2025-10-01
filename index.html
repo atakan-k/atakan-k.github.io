@@ -1,17 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="data:,">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Atakan Karakuş | Portfolio</title>
-    <script>
-      // This config is necessary to enable dark mode with the class strategy when using the CDN
-      tailwind.config = {
-        darkMode: 'class',
-      }
-    </script>
+    
+    <!-- SEO & Social Sharing -->
+    <meta name="description" content="Software Developer & Tech Enthusiast. Explore my projects, experience, and skills." />
+    <meta property="og:title" content="Atakan Karakuş | Portfolio" />
+    <meta property="og:description" content="Software Developer & Tech Enthusiast. Explore my projects, experience, and skills." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="data:image/webp;base64,UklGRnoCAABXRUJQVlA4IGICAABQFACdASoDAAIAAPm0skkWkIqGYBABwIANiU2fd+2Gv3B3MAAD+//AA/v8i9gA5+1e4fV/Vf6q/xf5r+1e6D/f/6X/M/uf7r/1/7z+5/5L/m/uB/oP/T/7H/E/8j/8v8x/wv/H/4X+I/zH+5/8H/h/9v/uf///+j/AP9N/zf+b/wP/G/5f/j/8z/v///+xH+Z/5X/J/2H/B/6H///+V/iP8h/qf+F/xP/L/7f///6fuAf6X/o/+z/e/+D////0/cA/lf+V/yH+t/63/j////+kB/q//R/9b/hf8z//P/T/v//+kD/U/+H/0v9t/w3///+b5AP6//tf+v/s//h////+kB/s//X/7P/L/43///+L5AP7L/1f/h/1n/P////+QD/U/+H/0v9t/w3///+b5AP6//tf+v/s//h////+kB/s//X/7P/L/43///+L5AP7L/1f/h/1n/P////+QD/U/+H/0v9t/w3///+b5AP6//tf+v/s//h////+kAA==" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Atakan Karakuş | Portfolio" />
+    <meta name="twitter:description" content="Software Developer & Tech Enthusiast. Explore my projects, experience, and skills." />
+    <meta name="twitter:image" content="data:image/webp;base64,UklGRnoCAABXRUJQVlA4IGICAABQFACdASoDAAIAAPm0skkWkIqGYBABwIANiU2fd+2Gv3B3MAAD+//AA/v8i9gA5+1e4fV/Vf6q/xf5r+1e6D/f/6X/M/uf7r/1/7z+5/5L/m/uB/oP/T/7H/E/8j/8v8x/wv/H/4X+I/zH+5/8H/h/9v/uf///+j/AP9N/zf+b/wP/G/5f/j/8z/v///+xH+Z/5X/J/2H/B/6H///+V/iP8h/qf+F/xP/L/7f///6fuAf6X/o/+z/e/+D////0/cA/lf+V/yH+t/63/j////+kB/q//R/9b/hf8z//P/T/v//+kD/U/+H/0v9t/w3///+b5AP6//tf+v/s//h////+kB/s//X/7P/L/43///+L5AP7L/1f/h/1n/P////+QD/U/+H/0v9t/w3///+b5AP6//tf+v/s//h////+kB/s//X/7P/L/43///+L5AP7L/1f/h/1n/P////+QD/U/+H/0v9t/w3///+b5AP6//tf+v/s//h////+kAA==" />
+
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = {}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -32,10 +39,19 @@
         animation: blink 1s step-end infinite;
       }
       /* For background floating animation */
-      @keyframes float {
-        0% { transform: translateY(0px) rotate(0deg); }
-        50% { transform: translateY(-25px) rotate(180deg); }
-        100% { transform: translateY(0px) rotate(360deg); }
+      @keyframes aurora {
+        0% {
+          transform: translateY(0px) rotate(0deg) scale(1);
+          filter: blur(4rem) hue-rotate(0deg);
+        }
+        50% {
+          transform: translateY(-80px) translateX(40px) rotate(180deg) scale(1.2);
+          filter: blur(4.5rem) hue-rotate(180deg);
+        }
+        100% {
+          transform: translateY(0px) rotate(360deg) scale(1);
+          filter: blur(4rem) hue-rotate(360deg);
+        }
       }
     </style>
   <script type="importmap">
@@ -43,8 +59,23 @@
   "imports": {
     "react/": "https://aistudiocdn.com/react@^19.1.1/",
     "react": "https://aistudiocdn.com/react@^19.1.1",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/"
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^6.25.1"
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Atakan Karakuş",
+  "url": "https://atakank-k.github.io/",
+  "sameAs": [
+    "https://github.com/atakank-k",
+    "https://linkedin.com/in/atakank-k",
+    "https://x.com/atakank-k",
+    "https://instagram.com/atakank-k"
+  ]
 }
 </script>
 </head>
