@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useAppContext } from '../context/AppContext';
-import AnimatedSection from './AnimatedSection';
-import { projectsData } from '../constants';
-import type { Project } from '../types';
+import { useAppContext } from '../context/AppContext.tsx';
+import AnimatedSection from './AnimatedSection.tsx';
+import { projectsData } from '../constants.ts';
+import type { Project } from '../types.ts';
 
 const ProjectCard: React.FC<{ item: Project }> = ({ item }) => (
   <Link 
