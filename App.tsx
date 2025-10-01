@@ -1,29 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 import Header from './components/Header';
-import Home from './components/Home';
-import About from './components/About';
-import Experience from './components/Experience';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
 import Background from './components/Background';
+import Sidebar from './components/Sidebar';
+import MainPage from './pages/MainPage';
+import ProjectDetail from './pages/ProjectDetail';
 
 function App() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   return (
     <AppProvider>
-      <div className="text-gray-800 dark:text-gray-200 min-h-screen transition-colors duration-300">
-        <Background />
-        <Header />
-        <main>
-          <Home />
-          <About />
-          <Experience />
-          <Projects />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
+      <BrowserRouter>
+        <div className="min-h-screen text-gray-300">
+          <Background />
+          <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+          <Header onMenuClick={() => setIsSidebarOpen(true)} />
+          <main>
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/project/:projectId" element={<ProjectDetail />} />
+            </Routes>
+          </main>
+        </div>
+      </BrowserRouter>
     </AppProvider>
   );
 }
