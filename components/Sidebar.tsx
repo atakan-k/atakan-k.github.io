@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useAppContext } from '../context/AppContext';
-import { projectsData, socialLinks } from '../constants';
-import { GithubIcon, LinkedinIcon, XIcon, InstagramIcon, CloseIcon } from './icons';
+import { useAppContext } from '../context/AppContext.tsx';
+import { projectsData, socialLinks } from '../constants.ts';
+import { GithubIcon, LinkedinIcon, XIcon, InstagramIcon, CloseIcon } from './icons.tsx';
 
 interface SidebarProps {
   isOpen: boolean;
