@@ -1,3 +1,5 @@
+import { profilePicture } from './assets.ts';
+
 export enum Theme {
   Light = 'light',
   Dark = 'dark',
@@ -9,15 +11,18 @@ export enum Language {
 }
 
 export interface Project {
+  id: string;
   title: string;
   description: string;
+  longDescription: string[];
   tags: string[];
   url: string;
+  imageUrl: string;
 }
 
 export interface Experience {
   company: string;
-  logo: React.FC<React.SVGProps<SVGSVGElement>>;
+  logo: string; // Changed from React.FC to string for image path
   title: string;
   date: string;
   description: string;
@@ -31,9 +36,16 @@ export interface NavLink {
 export interface Translations {
   [key: string]: {
     navLinks: NavLink[];
+    sidebar: {
+      title: string;
+    },
+    projectPages: {
+      backButton: string;
+    },
     home: {
       intro: string;
       name: string;
+      fullIntro: string;
       description: string;
     };
     about: {
