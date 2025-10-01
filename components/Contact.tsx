@@ -1,7 +1,7 @@
 import React from 'react';
-import { useAppContext } from '../context/AppContext';
-import AnimatedSection from './AnimatedSection';
-import { MailIcon } from './icons';
+import { useAppContext } from '../context/AppContext.tsx';
+import AnimatedSection from './AnimatedSection.tsx';
+import { MailIcon } from './icons.tsx';
 
 const Contact: React.FC = () => {
   const { texts, language } = useAppContext();
@@ -9,10 +9,10 @@ const Contact: React.FC = () => {
 
   return (
     <AnimatedSection id={sectionId}>
-      <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-4">
+      <h2 className="text-3xl font-bold text-center text-white mb-4">
         {texts.contact.title}
       </h2>
-      <p className="text-center text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12">
+      <p className="text-center text-lg text-gray-300 max-w-2xl mx-auto mb-12">
         {texts.contact.content}
       </p>
       <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
