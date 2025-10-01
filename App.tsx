@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 import Header from './components/Header';
 import Background from './components/Background';
@@ -12,7 +12,7 @@ function App() {
 
   return (
     <AppProvider>
-      <BrowserRouter>
+      <HashRouter>
         <div className="min-h-screen text-gray-300">
           <Background />
           <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
@@ -24,7 +24,7 @@ function App() {
             </Routes>
           </main>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </AppProvider>
   );
 }
