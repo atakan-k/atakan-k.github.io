@@ -3,100 +3,116 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
-	<title>Technopatai — Demo (Yakında)</title>
+	<title>Technopat AI Asistan — Demo | Atakan Karakuş</title>
+	<link rel="icon" href="../../assets/images/favicon.svg" type="image/svg+xml">
 	<script src="https://cdn.tailwindcss.com"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 	<style>
-		body { font-family: 'Inter', sans-serif; background-color: #020617; color: #fff; }
-		.noise-overlay { background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
+		:root {
+			--aurora-intensity: 0.72;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			font-family: 'Inter', sans-serif;
+			background-color: #020617;
+			color: #fff;
+			overflow-x: hidden;
+		}
+
+		.noise-overlay {
+			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+		}
+
+		.aurora-layer {
+			position: absolute;
+			border-radius: 9999px;
+			pointer-events: none;
+			opacity: calc(var(--layer-opacity, 0.25) * var(--aurora-intensity));
+			filter: blur(var(--layer-blur, 100px));
+			transform: translate3d(0, 0, 0);
+			mix-blend-mode: screen;
+			will-change: transform, opacity;
+		}
+
+		.demo-frame {
+			backdrop-filter: blur(18px);
+			-webkit-backdrop-filter: blur(18px);
+		}
+
+		@keyframes float-1 {
+			0%, 100% { transform: translate(0, 0) scale(1); }
+			50% { transform: translate(90px, 45px) scale(1.15); }
+		}
+
+		@keyframes float-2 {
+			0%, 100% { transform: translate(0, 0) scale(1); }
+			50% { transform: translate(-80px, -40px) scale(1.08); }
+		}
+
+		@keyframes float-3 {
+			0% { transform: translate(0, 0); }
+			33% { transform: translate(40px, -40px); }
+			66% { transform: translate(-40px, 40px); }
+			100% { transform: translate(0, 0); }
+		}
+
+		.animate-aurora-1 { animation: float-1 18s infinite ease-in-out alternate; }
+		.animate-aurora-2 { animation: float-2 16s infinite ease-in-out alternate; }
+		.animate-aurora-3 { animation: float-3 22s infinite linear; }
 	</style>
 </head>
 <body class="antialiased selection:bg-teal-500 selection:text-white">
 	<div id="aurora-background" class="fixed inset-0 z-[-1] overflow-hidden bg-slate-950">
-		<div class="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay noise-overlay"></div>
+		<div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(45,212,191,0.10),transparent_34%),radial-gradient(circle_at_80%_20%,rgba(168,85,247,0.16),transparent_28%),radial-gradient(circle_at_20%_80%,rgba(37,99,235,0.12),transparent_26%)]"></div>
+		<div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:88px_88px] opacity-20"></div>
+		<div class="aurora-layer animate-aurora-1" style="left:-12%; top:-10%; width:42vw; height:42vw; background:#0f766e; --layer-opacity:0.24; --layer-blur:110px;"></div>
+		<div class="aurora-layer animate-aurora-2" style="left:56%; top:56%; width:54vw; height:54vw; background:#7c3aed; --layer-opacity:0.22; --layer-blur:130px;"></div>
+		<div class="aurora-layer animate-aurora-3" style="left:18%; top:28%; width:30vw; height:30vw; background:#2563eb; --layer-opacity:0.16; --layer-blur:95px;"></div>
+		<div class="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-overlay noise-overlay"></div>
 	</div>
 
 	<main class="min-h-screen flex items-center justify-center p-6">
-		<div class="max-w-2xl w-full text-center bg-white/5 border border-white/10 rounded-2xl p-10 backdrop-blur-md">
-			<div class="mb-6">
-				<h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2">Demo Sayfası İlerleyen Zamanlarda Eklenecektir</h1>
-				<p class="text-gray-300">Bu demo şu an erişime kapalı. İlginiz için teşekkürler!</p>
-			</div>
+		<div class="max-w-4xl w-full">
+			<div class="demo-frame relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 shadow-2xl">
+				<div class="absolute inset-0 bg-gradient-to-br from-teal-500/10 via-transparent to-purple-500/10"></div>
+				<div class="relative px-6 py-5 sm:px-8 flex items-center justify-between border-b border-white/10 bg-slate-950/30">
+					<div>
+						<p class="text-xs uppercase tracking-[0.3em] text-teal-300/80">Technopat AI Asistan Demo</p>
+					</div>
+					<a id="main-site-link" href="../../index.html" class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-gray-200 transition-colors hover:bg-white/10 hover:text-white">
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+						Ana Siteye Git
+					</a>
+				</div>
 
-			<div class="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6">
-				<a href="../../index.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-teal-500 to-purple-600 text-white font-semibold px-5 py-3 rounded-full shadow-lg">Ana Sayfaya Dön</a>
-				<a href="javascript:history.back()" class="inline-flex items-center gap-2 text-gray-300 bg-white/5 px-4 py-3 rounded-lg border border-white/5">Geri</a>
+				<div class="relative px-6 py-14 sm:px-10 sm:py-18 text-center">
+					<div class="max-w-2xl mx-auto space-y-6">
+						<p class="text-sm uppercase tracking-[0.35em] text-teal-300/80">Yer Tutucu</p>
+						<h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">Demo sayfası ileride eklenecek.</h2>
+						<p class="text-base sm:text-lg leading-relaxed text-gray-300">Şimdilik burada içerik yok. Hazır olduğunda güncellenecektir.</p>
+						<p class="text-base sm:text-lg leading-relaxed text-gray-300">İlginiz için teşekkürler!</p>
+						<div class="pt-2">
+						</div>
+					</div>
+				</div>
 			</div>
-
-			<p class="text-xs text-gray-500 mt-6">İsterseniz daha sonra tekrar kontrol edin veya proje sayfasına geri dönün.</p>
 		</div>
 	</main>
+
+	<script>
+		(function () {
+			const mainSiteLink = document.getElementById('main-site-link');
+			if (!mainSiteLink) return;
+
+			mainSiteLink.addEventListener('click', function (event) {
+				event.preventDefault();
+				window.location.href = '../../index.html';
+			});
+		})();
+	</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
